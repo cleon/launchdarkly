@@ -2,23 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as LDClient from 'launchdarkly-js-client-sdk';
 
-const LD = () => {
-    var showFeature = false;
-    var user = {
-        "key": "aa0ceb"
-    };
-    var ldclient = LDClient.initialize('MY_CLIENT_SIDE_ID', user);
-    ldclient.on('ready', () => {
-        console.info('LD client ready.');
-        showFeature = ldclient.variation('my-feature-key', false);
-    });
+var showFeature = false;
 
+const LD = () => {
     return (
-        <h2>LD flag enabled: {showFeature ? "true" : "false"}</h2>
+        <h2>ld-demo flag enabled: {showFeature ? "true" : "false"}</h2>
     );
 };
 
-ReactDOM.render(
-    <LD />,
-    document.getElementById('root')
-);
+var user = {
+    "firstName": "chris",
+    "lastName": "leon",
+    "key": "chris.leon@appdynamics.com"
+};
+
+var ldclient = LDClient.initialize('607a00d6aea1e70c30fae7b8', user);
+
+ldclient.on('ready', () => {
+    showFeature = ldclient.variation('ld-demo', false);
+    ReactDOM.render(
+        <LD />,
+        document.getElementById('root')
+    );
+});
