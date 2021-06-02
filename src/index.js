@@ -31,7 +31,7 @@ var user = {
     "key": "cleon"
 };
 
-var ldclient = LDClient.initialize('60a2e4ab2cc59b0e94fa98d4', user);
+var ldclient = LDClient.initialize('', user);
 
 ldclient.on('ready', () => {
     showFeature = ldclient.variation('Leon-Test', false);
