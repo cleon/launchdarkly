@@ -14,4 +14,3 @@ Open a browser to http://localhost:8080 to view the flag check result.
 Run the following command in development to automatically regenerate app after code changes:
 ````ini
 npm run dev
-```
